@@ -16,6 +16,6 @@ jobs:
           echo installing twurl
           gem install twurl
           echo installing jq
-          sudo apt-get install jq
+          sudo apt-get install gnupg2 jq -y
       - name: tweet update
         run: twurl -X POST -H api.twitter.com "/1.1/statuses/update.json?status=Hello! github actions post" | jq
