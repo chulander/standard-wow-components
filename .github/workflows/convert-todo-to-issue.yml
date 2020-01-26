@@ -27,7 +27,7 @@ jobs:
       - name: get twitter bearer token
         run: |
           echo Getting bear token
-          twurl --authorize --consumer-key ${{secrets.twitter_consumer_key}} --consumer-secret ${{secrets.twitter_consumer_secret}}
+          twurl authorize --bearer --consumer-key ${{secrets.twitter_consumer_key}} --consumer-secret ${{secrets.twitter_consumer_secret}}
       - name: tweet update
         run: |
           echo posting update
