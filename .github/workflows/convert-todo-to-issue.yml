@@ -20,20 +20,15 @@ jobs:
           sudo apt-get install ruby2.6 -y
           sudo chown -R $(whoami) /var/lib/gems/2.6.0
           sudo chown -R $(whoami) /usr/local/bin
+      - name: install gem
+        run: |
+          echo installing twurl
+          gem install twurl
       - name: get twitter bearer token
         run: |
           echo Getting bear token
-          TOKEN=$(curl \
-          -H 'Accept: application/json' \
-          -H 'Content-Type: application/json' \
-          -u '${{secrets.twitter_consumer_key}}:${{secrets.twitter_consumer_secret}}' \
-          -X POST 'https://api.twitter.com/oauth2/token' | jq -r '.access_token')
+          twurl --authorize --consumer-key ${{secrets.twitter_consumer_key}} --consumer-secret ${{secrets.twitter_consumer_secret}}
       - name: tweet update
         run: |
           echo posting update
-          curl -v -G \
-          -H 'Accept: application/json' \
-          -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
-          -H 'Authorization: Bearer ${TOKEN}' \
-          -X POST 'https://api.twitter.com/1.1/statuses/update.json' \
-          --data-urlencode 'status=Hello! github actions post' | jq -r '.'
+          twurl --bearer -X POST '/api.twitter.com/1.1/statuses/update.json?status=Hello! github actions post' | jq -r '.'
