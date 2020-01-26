@@ -44,13 +44,9 @@ jobs:
         env:
           unlock: ${{ secrets.unlock }}
       - name: tweet changes
-        env:
-          REPO: ${GITHUB_REPOSITORY}
-          SHA: ${GITHUB_SHA}
-          EVENT: ${GITHUB_EVENT_NAME}
         run: |
           echo posting update
-          twurl -X POST -d 'status=$REPO made a $EVENT change for $SHA' '/1.1/statuses/update.json'  | jq -r '.'
+          twurl -X POST -d `'status=$(${{GITHUB_REPOSITORY}}) made a $(${{GITHUB_EVENT_NAME}}) change for $(${{GITHUB_SHA}})'` '/1.1/statuses/update.json'  | jq -r '.'
       - name: deleting secrets
         run: |
           echo deleting secrets
