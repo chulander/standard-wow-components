@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: todo-actions
         uses: dtinth/todo-actions@v0.2.0
-        env:
+        with:
+          node-version: '12.x'
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           TODO_ACTIONS_MONGO_URL: ${{secrets.mongodb}}
