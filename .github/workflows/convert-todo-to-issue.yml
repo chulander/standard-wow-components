@@ -7,6 +7,8 @@ jobs:
     name: Convert
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: todo-actions
         uses: dtinth/todo-actions@v0.2.0
         with:
