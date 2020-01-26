@@ -1,4 +1,1 @@
-
-function test(){
-  // TODO: implement TEST function
-}
+export { MagicButton } from "./MagicButton";

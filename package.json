@@ -1,0 +1,30 @@
+{
+  "name": "github-actions-argo-demo",
+  "version": "1.0.0",
+  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
+  "main": "src/index/js",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "react-dom": "^16.12.0",
+    "react": "^16.12.0",
+    "styled-components": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react-dom": "^16.12.0",
+    "react": "^16.12.0",
+    "styled-components": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chulander/github-actions-argo-demo.git"
+  },
+  "author": "bryan.p.chu@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chulander/github-actions-argo-demo/issues"
+  },
+  "homepage": "https://github.com/chulander/github-actions-argo-demo#readme"
+}
