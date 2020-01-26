@@ -24,22 +24,15 @@ jobs:
         run: |
           echo installing twurl
           gem install twurl
-      - name: get twitter bearer token
-        run: |
-          echo "profiles: \n
-            ${{secrets.twitter_user}}: \n
-              ${{secrets.twitter.consumer_key}}: \n
-                username: ${{secrets.twitter_user}} \n
-                consumer_key: ${{secrets.twitter_consumer_key}} \n
-                consumer_secret: ${{secrets.twitter_consumer_secret}} \n
-                token: ${{secrets.twitter_key}} \n
-                secret: ${{secrets.twitter_secret}} \n
-            configuration: \n
-            default_profile: \n
-            - ${{secrets.twitter_user}} \n
-            - ${{secrets.twitter_consumer_key}}
-          " >> /home/$(whoami)/.twurlrc
-          cat /home/$(whoami)/.twurlrc
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt.sh
+        env:
+          unlock: ${{ secrets.unlock }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/.twurlrc
       - name: tweet update
         run: |
           echo posting update
