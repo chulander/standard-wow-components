@@ -9,17 +9,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: add ruby repo
+        run: |
+          echo adding ruby repo
+          sudo apt-add-repository ppa:brightbox/ruby-ng
       - name: install ubuntu dependencies
         run: |
           echo installing gnupg2 jq
-          sudo apt-get install gnupg2 jq -y
-      - name: install rvm
-        run: |
-          echo retrieving rvm public key
-          gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-          echo installing rvm
-          curl -sSL https://get.rvm.io | bash -s stable --ruby
-          source /Users/$(whoami)/.rvm/scripts/rvm
+          sudo apt-get update
+          sudo apt-get install ruby2.6 gnupg2 jq -y
       - name: install gem
         run: |
           echo installing twurl
