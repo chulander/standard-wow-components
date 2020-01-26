@@ -25,7 +25,7 @@ jobs:
           echo Getting bear token
           TOKEN=$(curl -H 'Accept: application/json' \
           -H 'Content-Type: application/json' \
-          -u ${{secrets.twitter_consumer_key}}:${{secrets.twitter_consumer_secret}}' \
+          -u '${{secrets.twitter_consumer_key}}:${{secrets.twitter_consumer_secret}}' \
           -X POST 'https://api.twitter.com/oauth2/token' | jq -r '.access_token')
       - name: tweet update
         run: |
