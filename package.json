@@ -1,12 +1,16 @@
 {
   "name": "github-actions-argo-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "eslint": "^6.8.0",
-    "react-dom": "^16.12.0",
     "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "styled-components": "^5.0.0"
   },
   "peerDependencies": {
@@ -15,6 +19,7 @@
     "styled-components": "^5.0.0"
   },
   "scripts": {
+    "build": "babel src --out-dir ./build --source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
