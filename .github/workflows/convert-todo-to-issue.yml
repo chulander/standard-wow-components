@@ -1,0 +1,14 @@
+name: Convert TODOs into Issues
+# This workflow converts TODOs into issues and CLOSES the github issue once the TODO is removed
+on: [push]
+
+jobs:
+  build:
+    name: Convert
+    runs-on: ubuntu-latest
+    steps:
+      - name: TODO action
+        uses: https://github.com/dtinth/todo-actions
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          TODO_ACTIONS_MONGO_URL: ${{secrets.mongodb}}
