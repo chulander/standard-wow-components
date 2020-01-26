@@ -10,11 +10,11 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
       - run: npm install
       - run: npm build
       - run: npm install -g npm-cli-login
-      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_token}}
+      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_token}} -e ${{secrets.npm_email}}
       - run: npm publish
   notify:
     needs: build
