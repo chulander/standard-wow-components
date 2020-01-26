@@ -12,12 +12,11 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - run: npm install -g npm-cli-login
-      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_token}} -e ${{secrets.npm_email}}
+      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_password}} -e ${{secrets.npm_email}}
       - run: npm publish
   notify:
-    needs: build
     name: Notify
     runs-on: ubuntu-latest
     steps:
@@ -56,5 +55,12 @@ jobs:
         run: |
           echo deleting secrets
           rm $HOME/.twurlrc
-      - run: |
+  dispatch:
+    needs: [build, notify]
+    name: Dispatch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatching to other repo
+        uses: actions/checkout@v2
+        run: |
           curl -XPOST -u "${{secrets.repo_user}}:${{secrets.access_token}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/chulander/demo-github-actions-app/dispatches --data '{"event_type": "publish"}'
