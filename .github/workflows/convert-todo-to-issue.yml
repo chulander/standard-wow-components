@@ -13,7 +13,6 @@ jobs:
         run: |
           echo installing gnupg2 jq
           sudo apt-get install gnupg2 jq -y
-        sudo apt-get install gnupg2 -y
       - name: install gems
         run: |
           echo retrieving rvm public key
