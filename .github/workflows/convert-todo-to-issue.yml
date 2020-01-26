@@ -23,16 +23,14 @@ jobs:
       - name: get twitter bearer token
         run: |
           echo Getting bear token
-          TOKEN=$(curl -s \
-          -H 'Accept: application/json' \
+          TOKEN=$(curl -H 'Accept: application/json' \
           -H 'Content-Type: application/json' \
           -u ${{secrets.twitter_consumer_key}}:${{secrets.twitter_consumer_secret}}' \
-          'https://api.twitter.com/oauth2/token' | jq -r '.access_token')
+          -X POST 'https://api.twitter.com/oauth2/token' | jq -r '.access_token')
       - name: tweet update
         run: |
           echo posting update
-          curl -s \
-          -H 'Accept: application/json' \
+          curl -H 'Accept: application/json' \
           -H 'Content-Type: application/json' \
           -H 'Authorization: Bearer ${TOKEN}' \
           -X POST 'https://api.twitter.com/1.1/statuses/update.json?status=Hello! github actions post' | jq
