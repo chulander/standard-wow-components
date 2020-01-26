@@ -19,6 +19,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install ruby2.6 gnupg2 jq -y
           sudo chown -R $(whoami) /var/lib/gems/2.6.0
+          sudo chown -R $(whoami) /usr/local/bin
       - name: install gem
         run: |
           echo installing twurl
