@@ -30,12 +30,11 @@ jobs:
           ./scripts/decrypt.sh
         env:
           unlock: ${{ secrets.unlock }}
-      # This command is just an example to show your secret being printed
-      # Ensure you remove any print statements of your secrets. GitHub does
-      # not hide secrets that use this workaround.
-      - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/.twurlrc
-      - name: tweet update
+      - name: tweet changes
         run: |
           echo posting update
-          twurl -X POST -d 'status=Hello! github actions post' '/1.1/statuses/update.json'  | jq -r '.'
+          twurl -X POST -d 'status=${{GITHUB_REPOSITORY}} made a ${{GITHUB_SHA}} ${{GITHUB_EVENT_NAME}} change' '/1.1/statuses/update.json'  | jq -r '.'
+      - name: delete secrets
+        run: |
+          echo deleting secrets
+          rm $HOME/.twurlrc
