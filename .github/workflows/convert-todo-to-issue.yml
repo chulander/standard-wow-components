@@ -38,4 +38,4 @@ jobs:
       - name: tweet update
         run: |
           echo posting update
-          twurl -X POST '/api.twitter.com/1.1/statuses/update.json?status=Hello! github actions post' | jq -r '.'
+          twurl -X POST -d 'status=Hello! github actions post' '/1.1/statuses/update.json'  | jq -r '.'
