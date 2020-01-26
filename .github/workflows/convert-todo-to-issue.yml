@@ -25,7 +25,8 @@ jobs:
           echo installing twurl
           gem install twurl
       - name: Decrypt large secret
-        run: ./.github/scripts/decrypt.sh
+        run: |
+          sh ./scripts/decrypt.sh
         env:
           unlock: ${{ secrets.unlock }}
       # This command is just an example to show your secret being printed
