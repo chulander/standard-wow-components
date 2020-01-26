@@ -1,14 +1,18 @@
 {
-  "name": "github-actions-argo-demo",
+  "name": "standard-wow-components",
   "version": "1.0.1",
   "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
   "main": "build/index.js",
+  "pre-commit": [
+    "build"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "eslint": "^6.8.0",
+    "pre-commit": "^1.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.0.0"
@@ -24,12 +28,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chulander/github-actions-argo-demo.git"
+    "url": "git+https://github.com/chulander/standard-wow-components.git"
   },
   "author": "bryan.p.chu@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chulander/github-actions-argo-demo/issues"
+    "url": "https://github.com/chulander/standard-wow-components/issues"
   },
-  "homepage": "https://github.com/chulander/github-actions-argo-demo#readme"
+  "homepage": "https://github.com/chulander/standard-wow-components#readme"
 }

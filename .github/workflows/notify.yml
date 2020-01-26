@@ -1,10 +1,10 @@
-name: Convert TODOs into Issues
+name: Notify
 # This workflow converts TODOs into issues and CLOSES the github issue once the TODO is removed
 on: [push]
 
 jobs:
-  build:
-    name: Convert
+  notify:
+    name: Notify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
