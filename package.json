@@ -2,7 +2,7 @@
   "name": "github-actions-argo-demo",
   "version": "1.0.0",
   "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-  "main": "src/index/js",
+  "main": "src/index.js",
   "devDependencies": {
     "eslint": "^6.8.0",
     "react-dom": "^16.12.0",
