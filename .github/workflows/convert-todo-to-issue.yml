@@ -31,9 +31,9 @@ jobs:
       - name: tweet update
         run: |
           echo posting update
-          curl -G \
+          curl -v -G \
           -H 'Accept: application/json' \
           -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
           -H 'Authorization: Bearer ${TOKEN}' \
           -X POST 'https://api.twitter.com/1.1/statuses/update.json' \
-          --data-urlencode 'status=Hello! github actions post' | jq -r '.text'
+          --data-urlencode 'status=Hello! github actions post' | jq -r '.'
