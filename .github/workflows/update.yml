@@ -33,10 +33,10 @@ jobs:
       - name: tweet changes
         run: |
           echo posting update
-          twurl -X POST -d 'status=${{GITHUB_REPOSITORY}} made a ${{GITHUB_SHA}} ${{GITHUB_EVENT_NAME}} change' '/1.1/statuses/update.json'  | jq -r '.'
+          twurl -X POST -d 'status=$GITHUB_REPOSITORY made a $GITHUB_SHA $GITHUB_EVENT_NAME change' '/1.1/statuses/update.json'  | jq -r '.'
       - name: delete secrets
         run: |
           echo deleting secrets
           rm $HOME/.twurlrc
       - run: |
-          curl -XPOST -u "${{ secrets.github_user}}:${{secrets.access_token}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/chulander/demo-github-actions-app/dispatches --data '{"event_type": "publish"}'
+          curl -XPOST -u "${{secrets.repo_user}}:${{secrets.access_token}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/chulander/demo-github-actions-app/dispatches --data '{"event_type": "publish"}'
