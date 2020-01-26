@@ -14,7 +14,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm install -g npm-cli-login
-      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_password}} -e ${{secrets.npm_email}} -s ${{secrets.npm_user}}
+      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_password}} -e ${{secrets.npm_email}}
       - run: npm publish
   notify:
     name: Notify
