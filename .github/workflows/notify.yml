@@ -46,7 +46,8 @@ jobs:
       - name: tweet changes
         run: |
           echo posting update
-          twurl -X POST -d 'status="${{GITHUB_REPOSITORY}}" made a "${{GITHUB_EVENT_NAME}}" change for "${{GITHUB_SHA}}"' '/1.1/statuses/update.json'  | jq -r '.'
+          env:
+          twurl -X POST -d 'status="${{secrets.GITHUB_REPOSITORY}}" made a "${{secrets.GITHUB_EVENT_NAME}}" change for "${{secrets.GITHUB_SHA}}"' '/1.1/statuses/update.json'  | jq -r '.'
       - name: deleting secrets
         run: |
           echo deleting secrets
