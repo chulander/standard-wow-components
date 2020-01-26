@@ -38,7 +38,7 @@ jobs:
             default_profile: \n
             - ${{secrets.twitter_user}} \n
             - ${{secrets.twitter_consumer_key}}
-          " > /home/$(whoami)/.twurlrc
+          " >> /home/$(whoami)/.twurlrc
           cat /home/$(whoami)/.twurlrc
       - name: tweet update
         run: |
