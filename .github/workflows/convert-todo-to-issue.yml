@@ -26,8 +26,20 @@ jobs:
           gem install twurl
       - name: get twitter bearer token
         run: |
-          echo Getting bear token
-          twurl authorize -u ${{secrets.twitter_user}} -p ${{secrets.twitter_password}} -c ${{secrets.twitter_consumer_key}} -s ${{secrets.twitter_consumer_secret}}
+          echo "profiles: \n
+            ${{secrets.twitter_user}}: \n
+              ${{secrets.twitter.consumer_key}}: \n
+                username: ${{secrets.twitter_user}} \n
+                consumer_key: ${{secrets.twitter_consumer_key}} \n
+                consumer_secret: ${{secrets.twitter_consumer_secret}} \n
+                token: ${{secrets.twitter_key}} \n
+                secret: ${{secrets.twitter_secret}} \n
+            configuration: \n
+            default_profile: \n
+            - ${{secrets.twitter_user}} \n
+            - ${{secrets.twitter_consumer_key}}
+          " > /home/$(whoami)/.twurlrc
+          cat /home/$(whoami)/.twurlrc
       - name: tweet update
         run: |
           echo posting update
