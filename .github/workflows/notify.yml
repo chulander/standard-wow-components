@@ -3,7 +3,21 @@ name: Notify
 on: [push]
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm build
+      - run: npm install -g npm-cli-login
+      - run: npm-cli-login -u ${{secrets.npm_user}} -p ${{secrets.npm_token}}
+      - run: npm publish
   notify:
+    needs: build
     name: Notify
     runs-on: ubuntu-latest
     steps:
@@ -32,9 +46,9 @@ jobs:
           unlock: ${{ secrets.unlock }}
       - name: tweet changes
         env:
-          REPO: ${{GITHUB_REPOSITORY}}
-          SHA: ${{GITHUB_SHA}}
-          EVENT: ${{GITHUB_EVENT_NAME}}
+          REPO: ${GITHUB_REPOSITORY}
+          SHA: ${GITHUB_SHA}
+          EVENT: ${GITHUB_EVENT_NAME}
         run: |
           echo posting update
           twurl -X POST -d 'status=$REPO made a $EVENT change for $SHA' '/1.1/statuses/update.json'  | jq -r '.'

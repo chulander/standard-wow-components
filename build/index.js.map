@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA","sourcesContent":["export { MagicButton } from \"./MagicButton\";\n"],"file":"index.js"}
