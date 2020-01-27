@@ -53,8 +53,8 @@ jobs:
           unlock: ${{ secrets.unlock }}
       - name: tweet changes
         run: |
-          echo posting update
-          twurl -X POST -d 'status="$GITHUB_REPOSITORY" made a "$GITHUB_EVENT_NAME" change for "$GITHUB_SHA' '/1.1/statuses/update.json'  | jq -r '.'
+          echo tweeting changes
+          twurl -X POST '/1.1/statuses/update.json?status=$GITHUB_REPOSITORY' | jq
       - name: deleting secrets
         run: |
           echo deleting secrets
