@@ -54,7 +54,7 @@ jobs:
       - name: tweet changes
         run: |
           echo tweeting changes
-          twurl -X POST -H api.twitter.com "/1.1/statuses/update.json?status=$GITHUB_REPOSITORY just had a $GITHUB_EVENT_NAME for sha $GITHUB_SHA"
+          twurl -X POST -H api.twitter.com "/1.1/statuses/update.json?status=$GITHUB_REPOSITORY just had a $GITHUB_EVENT_NAME event for [$GITHUB_SHA](https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA)"
       - name: deleting secrets
         run: |
           echo deleting secrets
