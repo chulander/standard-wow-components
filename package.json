@@ -1,6 +1,6 @@
 {
   "name": "standard-wow-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
   "main": "build/index.js",
   "devDependencies": {
