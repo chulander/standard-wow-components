@@ -4,7 +4,7 @@ import Button from "@argodigital/ui-toolkit/dist/Button";
 
 export function MagicButton({ className, children }) {
   return (
-    <Button theme="primary">
+    <Button theme="alternate">
       <Button.Text>{children}</Button.Text>
     </Button>
   );

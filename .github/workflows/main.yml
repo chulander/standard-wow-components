@@ -1,11 +1,5 @@
 name: Main
-# This workflow converts
-# builds the library
-# tweets about the change in parallel
-# dispatches to other repos
-
 on: [push]
-
 jobs:
   build:
     name: Build
