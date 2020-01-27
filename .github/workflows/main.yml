@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: "12.x"
       - run: |
-          echo install npm dependencies
           npm install
       - run: npm run build
       - run: npm install -g npm-cli-login
