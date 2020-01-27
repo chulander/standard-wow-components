@@ -9,5 +9,5 @@ export function MagicButton({ className, value }) {
     `,
     []
   );
-  return <Buton className={className}>{value}</Buton>;
+  return <Button className={className}>{value}</Button>;
 }
