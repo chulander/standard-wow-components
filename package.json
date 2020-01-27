@@ -1,6 +1,6 @@
 {
   "name": "standard-wow-components",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
   "main": "build/index.js",
   "devDependencies": {
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/chulander/standard-wow-components/issues"
   },
-  "homepage": "https://github.com/chulander/standard-wow-components#readme"
+  "homepage": "https://github.com/chulander/standard-wow-components#readme",
+  "dependencies": {
+    "@argodigital/ui-toolkit": "^1.0.0-beta.1j"
+  }
 }

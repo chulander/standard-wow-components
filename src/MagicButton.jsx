@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import Button from "@argodigital/ui-toolkit/dist/Button";
 
-export function MagicButton({ className, value }) {
+export function MagicButton({ className, children }) {
   const Button = useMemo(
     () => styled.button`
       background-color: blue;
@@ -9,5 +10,9 @@ export function MagicButton({ className, value }) {
     `,
     []
   );
-  return <Button className={className}>{value}</Button>;
+  return (
+    <Button theme="primary">
+      <Button.Text>{children}</Button.Text>
+    </Button>
+  );
 }
